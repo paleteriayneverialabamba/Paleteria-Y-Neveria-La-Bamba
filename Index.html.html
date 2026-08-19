@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Bamba Paletería y Nevería — Atlantic City, NJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF7EA;
+    --cream-2:#FFEFD6;
+    --plum:#2B1740;
+    --pink:#E6357B;
+    --pink-dark:#C41F62;
+    --purple:#6B3FA0;
+    --turquoise:#17A398;
+    --mango:#FFC23C;
+    --lime:#9FD13B;
+    --line:rgba(43,23,64,0.10);
+    --shadow:0 18px 40px rgba(107,63,160,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--plum);
+    font-family:'Nunito', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    line-height:1.08;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  ::selection{background:var(--mango); color:var(--plum);}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* ---------- scallop / drip divider ---------- */
+  .drip{
+    width:100%; height:34px; display:block;
+    background: var(--cream);
+  }
+  .drip svg{width:100%; height:100%; display:block;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,247,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 28px; max-width:1120px; margin:0 auto;}
+  .brand{font-family:'Baloo 2'; font-size:1.35rem; color:var(--pink-dark); display:flex; align-items:center; gap:8px;}
+  .brand .scoop{width:20px; height:20px; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--mango), var(--pink));}
+  nav.links{display:flex; gap:26px; font-size:0.92rem; font-weight:700;}
+  nav.links a{opacity:0.75; padding:6px 2px; border-bottom:2px solid transparent; transition:all .2s;}
+  nav.links a:hover, nav.links a:focus-visible{opacity:1; border-color:var(--turquoise); outline:none;}
+  .nav-cta{
+    background:var(--pink); color:#fff; padding:10px 20px; border-radius:30px;
+    font-weight:800; font-size:0.85rem; box-shadow:0 6px 14px rgba(230,53,123,0.35);
+    transition:transform .15s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; padding:90px 28px 60px; text-align:center; overflow:hidden;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(255,194,60,0.35), transparent 45%),
+      radial-gradient(circle at 88% 20%, rgba(23,163,152,0.28), transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(230,53,123,0.22), transparent 50%),
+      var(--cream);
+  }
+  .confetti span{
+    position:absolute; border-radius:50%; opacity:0.55;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; border:2px solid var(--plum); border-radius:30px;
+    padding:8px 18px; font-weight:800; font-size:0.78rem; letter-spacing:0.6px;
+    text-transform:uppercase; color:var(--purple); margin-bottom:26px;
+    box-shadow:4px 4px 0 var(--plum);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,7vw,5rem); color:var(--plum); margin-bottom:18px; position:relative; z-index:1;
+  }
+  .hero h1 .sw1{color:var(--pink-dark);}
+  .hero h1 .sw2{color:var(--turquoise);}
+  .hero p.sub{max-width:540px; margin:0 auto 34px; font-size:1.12rem; font-weight:600; opacity:0.8; position:relative; z-index:1;}
+  .hero-ctas{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1;}
+  .btn{
+    padding:14px 26px; border-radius:30px; font-weight:800; font-size:0.92rem;
+    display:inline-flex; align-items:center; gap:8px; border:2px solid transparent;
+    transition:transform .15s, box-shadow .2s;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--pink); color:#fff; box-shadow:0 10px 22px rgba(230,53,123,0.35);}
+  .btn-primary:hover{background:var(--pink-dark);}
+  .btn-outline{border-color:var(--plum); color:var(--plum); background:#fff;}
+  .btn-outline:hover{background:var(--plum); color:#fff;}
+
+  .flavor-strip{
+    margin-top:64px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap; position:relative; z-index:1;
+  }
+  .flavor-chip{
+    background:#fff; border:2px solid var(--plum); border-radius:40px;
+    padding:9px 18px; font-weight:700; font-size:0.85rem;
+    box-shadow:3px 3px 0 var(--plum);
+  }
+
+  /* ---------- about ---------- */
+  .about{padding:80px 0 60px;}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .tag{
+    display:inline-block; font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--turquoise); font-weight:800; margin-bottom:14px;
+  }
+  .about h2{font-size:clamp(1.8rem,3.4vw,2.5rem); margin-bottom:18px;}
+  .about p{opacity:0.78; margin-bottom:16px; max-width:52ch; font-weight:600;}
+  .stick-card{
+    background:linear-gradient(160deg, var(--purple), #4A2A73);
+    color:#fff; border-radius:24px; padding:34px; box-shadow:var(--shadow);
+    position:relative;
+  }
+  .stick-card::before{
+    content:""; position:absolute; left:50%; top:-26px; transform:translateX(-50%);
+    width:16px; height:40px; background:#EBD9B8; border-radius:6px;
+  }
+  .stick-card h3{font-size:1.2rem; margin-bottom:14px; color:var(--mango);}
+  .stick-card .row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(255,255,255,0.2); font-size:0.92rem; font-weight:700;}
+  .stick-card .row:last-child{border-bottom:none;}
+
+  /* ---------- menu ---------- */
+  .menu{padding:70px 0 90px;}
+  .menu-head{text-align:center; max-width:640px; margin:0 auto 44px;}
+  .menu-head h2{font-size:clamp(2rem,4vw,2.7rem); margin-bottom:12px;}
+  .menu-head p{opacity:0.7; font-weight:600;}
+
+  .tabs{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:50px;}
+  .tab{
+    padding:10px 20px; border:2px solid var(--plum); border-radius:30px;
+    font-size:0.85rem; font-weight:800; cursor:pointer; background:#fff;
+    color:var(--plum); font-family:'Nunito'; transition:all .2s; display:inline-block;
+    scroll-margin-top:90px;
+  }
+  .tab:hover, .tab:focus-visible{background:var(--pink); color:#fff; border-color:var(--pink); outline:none;}
+
+  .cat-head{
+    font-size:1.3rem; color:var(--purple); margin:48px 0 18px; text-align:center;
+    scroll-margin-top:90px;
+  }
+  .cat-head:first-of-type{margin-top:0;}
+
+  .scoop-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin-bottom:8px;}
+  .scoop{
+    background:#fff; border:2px solid var(--plum); border-radius:18px; padding:22px;
+    box-shadow:4px 4px 0 var(--plum);
+  }
+  .scoop h3{font-size:1.05rem; color:var(--pink-dark); margin-bottom:8px;}
+  .scoop p{font-size:0.88rem; opacity:0.75; font-weight:600;}
+
+  /* ---------- signature ---------- */
+  .signature{
+    padding:90px 28px; text-align:center;
+    background: linear-gradient(180deg, var(--purple), #4A2A73);
+    color:#fff; position:relative;
+  }
+  .signature h2{font-size:clamp(2rem,4vw,2.8rem); color:var(--mango); margin-bottom:16px;}
+  .signature p{max-width:560px; margin:0 auto 30px; opacity:0.85; font-weight:600;}
+  .corn-badge{
+    display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,0.1);
+    border:2px solid var(--mango); border-radius:40px; padding:12px 24px; font-weight:800;
+    font-size:0.95rem;
+  }
+
+  /* ---------- reviews ---------- */
+  .reviews{padding:90px 0;}
+  .reviews-head{text-align:center; margin-bottom:44px;}
+  .reviews-head h2{font-size:clamp(2rem,4vw,2.7rem);}
+  .rev-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .rev-card{background:#fff; border:2px solid var(--plum); border-radius:18px; padding:26px; box-shadow:4px 4px 0 var(--plum);}
+  .stars{color:var(--mango); letter-spacing:2px; margin-bottom:12px; font-size:0.95rem;}
+  .rev-card p{font-size:0.92rem; opacity:0.8; font-weight:600; font-style:italic;}
+  .rev-card .who{margin-top:14px; font-size:0.76rem; opacity:0.55; font-style:normal; text-transform:uppercase; letter-spacing:0.5px; font-weight:800;}
+
+  /* ---------- visit ---------- */
+  .visit{padding:90px 0; background:var(--cream-2); border-top:2px solid var(--plum); border-bottom:2px solid var(--plum);}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .visit h2{font-size:clamp(2rem,4vw,2.6rem); margin-bottom:22px;}
+  .info-line{display:flex; gap:14px; padding:15px 0; border-bottom:1px dashed var(--line);}
+  .info-line .k{width:110px; flex-shrink:0; color:var(--pink-dark); font-weight:800; font-size:0.85rem; text-transform:uppercase;}
+  .info-line .v{opacity:0.85; font-size:0.95rem; font-weight:700;}
+  .order-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;}
+  .map-card{
+    background:#fff; border:2px solid var(--plum); border-radius:20px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .map-visual{
+    height:200px; position:relative;
+    background: repeating-linear-gradient(45deg, #FFE8B8, #FFE8B8 12px, #FFDFA0 12px, #FFDFA0 24px);
+  }
+  .map-pin{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-100%);
+    width:36px; height:36px; background:var(--pink); border-radius:50% 50% 50% 0;
+    rotate:-45deg; box-shadow:0 6px 14px rgba(0,0,0,0.25);
+  }
+  .map-pin::after{content:""; position:absolute; inset:8px; background:#fff; border-radius:50%;}
+  .map-card .details{padding:22px;}
+  .map-card .details h3{font-size:1.05rem; color:var(--pink-dark); margin-bottom:6px;}
+  .map-card .details p{font-size:0.88rem; opacity:0.75; margin-bottom:16px; font-weight:600;}
+  .map-card .btn{width:100%; justify-content:center;}
+
+  /* ---------- pitch ---------- */
+  .pitch{padding:64px 28px; text-align:center;}
+  .pitch .wrap{max-width:600px;}
+  .pitch h3{font-size:1.4rem; margin-bottom:10px; color:var(--purple);}
+  .pitch p{opacity:0.7; font-weight:600; font-size:0.95rem;}
+
+  footer{padding:32px 28px; text-align:center; font-size:0.8rem; opacity:0.55; font-weight:700;}
+
+  .reveal{opacity:1; transform:none;}
+  .reveal.pre{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.pre.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:900px){
+    .about-grid, .visit-grid{grid-template-columns:1fr; gap:36px;}
+    .rev-grid{grid-template-columns:1fr;}
+    nav.links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="scoop"></span>La Bamba</div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="nav-cta" href="#visit">Order Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">🍧 Ducktown · Atlantic City</div>
+  <h1>Paletas, raspados<br><span class="sw1">&amp; street corn</span> <span class="sw2">done right</span></h1>
+  <p class="sub">A family-owned Mexican ice cream shop a few blocks from the Boardwalk and Tanger Outlets — real fruit, real cream, made fresh every day.</p>
+  <div class="hero-ctas">
+    <a class="btn btn-primary" href="https://www.doordash.com/en/store/la-bamba-paleteria-y-neveria-atlantic-city-32040222/" target="_blank" rel="noopener">Order Delivery</a>
+    <a class="btn btn-outline" href="tel:+16094023963">Call (609) 402-3963</a>
+  </div>
+  <div class="flavor-strip">
+    <div class="flavor-chip">🥭 Mango Raspado</div>
+    <div class="flavor-chip">🌽 Elote Callejero</div>
+    <div class="flavor-chip">🍫 Churro Sundae</div>
+    <div class="flavor-chip">🥤 Horchata</div>
+  </div>
+</section>
+
+<div class="drip">
+  <svg viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,0 H1200 V14 C1150,30 1100,4 1050,18 C1000,32 950,6 900,20 C850,34 800,8 750,18 C700,28 650,4 600,18 C550,32 500,6 450,20 C400,34 350,8 300,18 C250,28 200,4 150,18 C100,32 50,6 0,18 Z" fill="#FFF7EA"/></svg>
+</div>
+
+<section class="about reveal" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="tag">Our Story</div>
+      <h2>Made fresh, served with a smile.</h2>
+      <p>La Bamba brings the flavors of a Mexican paletería to Atlantic Avenue — hand-dipped paletas, shaved-ice raspados in a dozen flavors, and the fresh street corn we're known for.</p>
+      <p>Everything is built to order, from a classic mango raspado to a fully loaded churro sundae, right in the heart of Ducktown.</p>
+    </div>
+    <div class="stick-card">
+      <h3>On the menu board</h3>
+      <div class="row"><span>Raspados</span><span>12 flavors</span></div>
+      <div class="row"><span>Botanas &amp; Antojitos</span><span>18 items</span></div>
+      <div class="row"><span>Malteadas</span><span>Build your own</span></div>
+      <div class="row"><span>Aguas Frescas</span><span>5 flavors</span></div>
+      <div class="row"><span>Cocktail de Fruta</span><span>7 fruits</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu reveal" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <h2>Full Menu</h2>
+      <p>Every category, right here — jump to one below or just scroll.</p>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="#raspados">Raspados</a>
+      <a class="tab" href="#botanas">Botanas &amp; Antojitos</a>
+      <a class="tab" href="#malteadas">Malteadas</a>
+      <a class="tab" href="#aguas">Aguas Frescas</a>
+      <a class="tab" href="#cocktail">Cocktail de Fruta</a>
+    </div>
+
+    <h3 class="cat-head" id="raspados">Raspados</h3>
+    <div class="scoop-grid">
+      <div class="scoop"><h3>Limón · Mango · Tamarindo</h3><p>Classic shaved-ice raspados, made to order.</p></div>
+      <div class="scoop"><h3>Rompope · Piña Colada</h3><p>Creamy, dessert-style flavors.</p></div>
+      <div class="scoop"><h3>Grosella · Guayaba · Cajeta</h3><p>Fruit and caramel favorites.</p></div>
+      <div class="scoop"><h3>Vainilla · Chicle · Guanábana</h3><p>Sweet and tropical options.</p></div>
+    </div>
+
+    <h3 class="cat-head" id="botanas">Botanas &amp; Antojitos</h3>
+    <div class="scoop-grid">
+      <div class="scoop"><h3>Elotes &amp; Esquites</h3><p>Fresh street corn, on the cob or in a cup, the shop's signature.</p></div>
+      <div class="scoop"><h3>Esquites con Patita de Pollo</h3><p>Street corn topped with chicken feet, a Mexican classic.</p></div>
+      <div class="scoop"><h3>Mangonadas &amp; Chamoyadas</h3><p>Mango or chamoy-based frozen treats with chili-lime rim.</p></div>
+      <div class="scoop"><h3>Churros Rellenos</h3><p>Filled churros, served warm.</p></div>
+      <div class="scoop"><h3>Chicharrones Preparados</h3><p>Loaded pork rinds with fresh toppings.</p></div>
+      <div class="scoop"><h3>Doritos &amp; Papas Locas</h3><p>Loaded chips and fries, Mexican street-snack style.</p></div>
+      <div class="scoop"><h3>Pepinos &amp; Tunas Locas</h3><p>Spiced cucumber and prickly pear.</p></div>
+      <div class="scoop"><h3>Bamba Sundae</h3><p>The house sundae, loaded with toppings.</p></div>
+      <div class="scoop"><h3>Barco de Pepino</h3><p>Cucumber "boat" loaded with fruit and spice.</p></div>
+      <div class="scoop"><h3>Helados Tres Marías</h3><p>A trio of classic ice cream scoops.</p></div>
+    </div>
+
+    <h3 class="cat-head" id="malteadas">Malteadas</h3>
+    <div class="scoop-grid">
+      <div class="scoop"><h3>Ritmo Bamba</h3><p>The house-special milkshake.</p></div>
+      <div class="scoop"><h3>Oreo</h3><p>Cookies-and-cream milkshake.</p></div>
+      <div class="scoop"><h3>Fresa</h3><p>Fresh strawberry milkshake.</p></div>
+      <div class="scoop"><h3>Nuez</h3><p>Pecan milkshake.</p></div>
+      <div class="scoop"><h3>Haz Tu Propio Sabor</h3><p>Build your own flavor combination.</p></div>
+    </div>
+
+    <h3 class="cat-head" id="aguas">Aguas Frescas</h3>
+    <div class="scoop-grid">
+      <div class="scoop"><h3>Horchata</h3><p>Classic rice and cinnamon water.</p></div>
+      <div class="scoop"><h3>Tamarindo</h3><p>Sweet-tart tamarind water.</p></div>
+      <div class="scoop"><h3>Piña</h3><p>Fresh pineapple water.</p></div>
+      <div class="scoop"><h3>Sandía</h3><p>Fresh watermelon water.</p></div>
+      <div class="scoop"><h3>Jamaica</h3><p>Hibiscus flower water.</p></div>
+    </div>
+
+    <h3 class="cat-head" id="cocktail">Cocktail de Fruta</h3>
+    <div class="scoop-grid">
+      <div class="scoop"><h3>Cocktail de Fruta Mix</h3><p>Pepinos, jícama, sandía, piña, mango, melón and fresa, all in one cup.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="signature reveal">
+  <div class="wrap">
+    <h2>Best known for one thing: the corn.</h2>
+    <p>Fresh elotes and esquites, made the way street corn should be — buttery, spiced, and loaded with toppings. It's the dish regulars order every single visit.</p>
+    <div class="corn-badge">🌽 Fresh Street Corn · Made to Order</div>
+  </div>
+</section>
+
+<section class="reviews reveal" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div class="tag">Word on the street</div>
+      <h2>What people are saying</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p>"Every flavor of ice cream is unique and tastes great."</p>
+        <div class="who">Local guide</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p>"The street corn here is the best I've had in Atlantic City, hands down."</p>
+        <div class="who">DoorDash review</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p>"Family-run, super friendly, and the churro sundae did not disappoint."</p>
+        <div class="who">Repeat customer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit reveal" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <div class="tag">Visit Us</div>
+      <h2>Stop by for a scoop.</h2>
+      <div class="info-line"><div class="k">Address</div><div class="v">2406 Atlantic Ave, Atlantic City, NJ 08401</div></div>
+      <div class="info-line"><div class="k">Hours</div><div class="v">Mon–Thu 12–9 PM · Fri–Sun 12–10 PM</div></div>
+      <div class="info-line"><div class="k">Phone</div><div class="v"><a href="tel:+16094023963">(609) 402-3963</a></div></div>
+      <div class="info-line"><div class="k">Near</div><div class="v">Tanger Outlets &amp; the Boardwalk</div></div>
+      <div class="order-row">
+        <a class="btn btn-primary" href="https://www.doordash.com/en/store/la-bamba-paleteria-y-neveria-atlantic-city-32040222/" target="_blank" rel="noopener">Order on DoorDash</a>
+        <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=La+Bamba+Paleteria+y+Neveria%2C+2406+Atlantic+Ave%2C+Atlantic+City%2C+NJ+08401" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+    <div class="map-card">
+      <div class="map-visual"><div class="map-pin"></div></div>
+      <div class="details">
+        <h3>La Bamba Paletería y Nevería</h3>
+        <p>2406 Atlantic Ave, Atlantic City, NJ 08401</p>
+        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=La+Bamba+Paleteria+y+Neveria%2C+2406+Atlantic+Ave%2C+Atlantic+City%2C+NJ+08401" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pitch reveal">
+  <div class="wrap">
+    <h3>This is a concept — built for La Bamba.</h3>
+    <p>Ready to put on your own domain, with the DoorDash and phone links wired in, and easy to update whenever the flavor board changes.</p>
+  </div>
+</section>
+
+<footer>
+  La Bamba Paletería y Nevería · Atlantic City, NJ · Website concept mockup
+</footer>
+
+<script>
+  // Content is visible by default (see CSS). This only ADDS a fade-in
+  // effect when JS/IntersectionObserver are available — it can never
+  // hide content, so a script failure never breaks the page.
+  try{
+    const revealEls = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      revealEls.forEach(el=>el.classList.add('pre'));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, {threshold:0.12});
+      revealEls.forEach(el=>io.observe(el));
+    }
+  }catch(err){
+    console.error('Reveal animation skipped:', err);
+  }
+</script>
+
+</body>
+</html>
